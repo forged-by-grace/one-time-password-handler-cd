@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: one-time-password
+  labels:
+    app: one-time-password-app
+  namespace: otp
+spec:
+  selector:
+    matchLabels:
+      app: one-time-password-app
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: one-time-password-app
+    spec:
+      containers:
+      - name: one-time-password-app
+        image: conano/one-time-password-handler:latest        
+        envFrom:
+        - secretRef:
+            name: one-time-password-secret
+        imagePullPolicy: IfNotPresent        
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        
