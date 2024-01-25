@@ -13,7 +13,7 @@ pipeline {
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'main', credentialsId: 'github', url: 'https://github.com/forged-by-grace/one-time-password-handler-ops.git'
+                   git branch: 'main', credentialsId: 'github', url: 'https://github.com/forged-by-grace/one-time-password-handler-cd.git'
                }
         }
 
