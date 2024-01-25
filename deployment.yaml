@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: one-time-password-app
-        image: conano/one-time-password-handler:0.0.1-10
+        image: conano/one-time-password-handler:0.0.1-11
         envFrom:
         - secretRef:
             name: one-time-password-secret
